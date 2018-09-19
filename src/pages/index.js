@@ -24,10 +24,10 @@ class App extends Component {
             console.log(data);
         });
 
-        socket.on("video timestamp", data => {
+        socket.on("video data", data => {
             console.log(data);
             this.setState({
-                videoTimestamp: data.videoTimestamp
+                videoData: data
             });
         });
     }
@@ -39,7 +39,7 @@ class App extends Component {
             playerVars: {
               autoplay: 1,
               controls: 0,
-              start: this.state.videoTimestamp,
+              start: this.state.videoData.timestamp,
               enablejsapi: true,
               showinfo: 0
             }            
@@ -47,7 +47,7 @@ class App extends Component {
 
         return (
             <YouTube
-            videoId="lLWEXRAnQd0"
+            videoId={this.state.videoData.Id}
             opts={opts}
             onReady={this._onReady}
           />
