@@ -23,6 +23,13 @@ class App extends Component {
         socket.on("user left", data => {
             console.log(data);
         });
+
+        socket.on("video timestamp", data => {
+            console.log(data);
+            this.setState({
+                videoTimestamp: data.videoTimestamp
+            });
+        });
     }
 
     render() {
@@ -32,6 +39,7 @@ class App extends Component {
             playerVars: {
               autoplay: 1,
               controls: 0,
+              start: this.state.videoTimestamp,
               enablejsapi: true,
               showinfo: 0
             }            
