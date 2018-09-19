@@ -13,9 +13,13 @@ class App extends Component {
         const { endpoint } = this.state;
         const socket = io(endpoint);
 
-        socket.emit('add user', "Bob Ross");
+        socket.emit("add user", "Bob Ross");
 
-        socket.on("user joined", (data) =>{
+        socket.on("user joined", data => {
+            console.log(data);
+        });
+
+        socket.on("user left", data => {
             console.log(data);
         });
     }
