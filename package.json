@@ -11,5 +11,8 @@
     "gatsby": "^2.0.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1"
+  },
+  "devDependencies": {
+    "react-youtube": "^7.6.0"
   }
 }
