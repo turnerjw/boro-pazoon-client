@@ -5,13 +5,19 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            endpoint: "https://boro-pazoon-server-kvcqxgohop.now.sh"
+            endpoint: "https://boro-pazoon-server.glitch.me/"
         };
     }
 
     componentDidMount() {
         const { endpoint } = this.state;
         const socket = io(endpoint);
+
+        socket.emit('add user', "Bob Ross");
+
+        socket.on("user joined", (data) =>{
+            console.log(data);
+        });
     }
 
     render() {
