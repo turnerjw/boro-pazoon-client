@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import io from "../../node_modules/socket.io-client";
+import YouTubePlayer from "youtube-player";
 
 class App extends Component {
     constructor() {
