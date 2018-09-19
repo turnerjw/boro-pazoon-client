@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import io from "../../node_modules/socket.io-client";
-import YouTubePlayer from "youtube-player";
+import YouTube from 'react-youtube';
 
 class App extends Component {
     constructor() {
@@ -26,7 +26,25 @@ class App extends Component {
     }
 
     render() {
-        return <div>Hello world!</div>;
+        const opts = {
+            height: '390',
+            width: '640',
+            playerVars: {
+              autoplay: 1,
+              controls: 0,
+              enablejsapi: true,
+              showinfo: 0
+            }            
+          };
+
+        return (
+            <YouTube
+            videoId="lLWEXRAnQd0"
+            opts={opts}
+            onReady={this._onReady}
+          />
+
+        )
     }
 }
 
