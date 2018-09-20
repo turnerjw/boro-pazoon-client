@@ -5,3 +5,13 @@ iframe {
 .chrome-picker {
     width: 100% !important;
 }
+
+.sps-navbar__brand-logo {
+    animation: rotate 33s linear infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
