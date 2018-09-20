@@ -72,13 +72,13 @@ class App extends Component {
         return (
             <div className="sps-page sps-page--full-width">
                 <div className="sps-body sps-body--collapse-550">
-                    <aside class="sps-body__sidebar sps-body__sidebar--400">
+                    <aside className="sps-body__sidebar sps-body__sidebar--400">
                         <SPSHeader />
                         <div className="sps-card">
-                            <div class="sps-card__header">
-                                <h4 class="sps-card__title">
+                            <div className="sps-card__header">
+                                <h4 className="sps-card__title">
                                     <i
-                                        class="sps-icon sps-icon-heart"
+                                        className="sps-icon sps-icon-heart"
                                         aria-hidden="true"
                                     />
                                     Bob Vision
@@ -97,7 +97,7 @@ class App extends Component {
                             onChange={this.handleColorChange}
                         />
                     </aside>
-                    <section class="sps-main-content sps-column-layout">
+                    <section className="sps-main-content sps-column-layout">
                         <Canvas color={color} socket={socket} />
                     </section>
                 </div>
