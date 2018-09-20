@@ -30,10 +30,10 @@ class Canvas extends Component {
             false
         );
 
-        // this.props.socket.on("drawing", data =>{
-        //     console.log(data);
-        //     this.drawLine(data.x0, data.y0, data.x1, data.y1, false);
-        // })
+        this.props.socket.on("drawing", data =>{
+            console.log(data);
+            this.drawLine(data.x0, data.y0, data.x1, data.y1, false);
+        })
 
         this.setState({
             canvas: canvas,
@@ -129,7 +129,7 @@ class Canvas extends Component {
                     </h4>
                 </div>
                 <div className="sps-card__body">
-                    <canvas ref="canvas" width={400} height={400} />
+                    <canvas ref="canvas" width={1000} height={600} />
                 </div>
             </div>
         );
