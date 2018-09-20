@@ -20,8 +20,6 @@ class Canvas extends Component {
         const { socket } = this.state;
         const canvas = this.refs.canvas;
         const context = canvas.getContext("2d");
-        context.font = "40px Courier";
-        context.fillText("Test Text", 210, 75);
 
         canvas.addEventListener("mousedown", this.onMouseDown, false);
         canvas.addEventListener("mouseup", this.onMouseUp, false);
@@ -127,11 +125,11 @@ class Canvas extends Component {
                             className="sps-icon sps-icon-hat"
                             aria-hidden="true"
                         />
-                        Your own little canvas
+                        Little Community Canvas
                     </h4>
                 </div>
                 <div className="sps-card__body">
-                    <canvas ref="canvas" width={640} height={425} />
+                    <canvas ref="canvas" width={400} height={400} />
                 </div>
             </div>
         );

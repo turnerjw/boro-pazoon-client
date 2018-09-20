@@ -26,7 +26,9 @@ class App extends Component {
         const { endpoint } = this.state;
         const socket = io(endpoint);
 
-        socket.emit("add user", "Bob Ross");
+        const user = "Bob Ross (" + Date.now() + ")";
+        socket.emit("add user", user);
+        console.log("You are " + user);
 
         socket.on("user joined", data => {
             console.log(data);
