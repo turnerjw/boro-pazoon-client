@@ -61,7 +61,7 @@ class App extends Component {
     };
 
     return (
-      <div class="sps-page sps-page--full-width">
+      <div className="sps-page sps-page--full-width">
         <SPSHeader />
         <YouTube
           videoId={this.state.videoData.id}
