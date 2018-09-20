@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import io from "../../node_modules/socket.io-client";
 import YouTube from "react-youtube";
 import { ChromePicker } from "react-color";
+import { ReactCanvas } from "react-canvas";
 
 class App extends Component {
     constructor() {
@@ -57,6 +58,7 @@ class App extends Component {
                     opts={opts}
                     onReady={this._onReady}
                 />
+                <ReactCanvas />
                 <ChromePicker />
             </div>
         );
