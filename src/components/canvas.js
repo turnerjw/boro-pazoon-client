@@ -32,7 +32,7 @@ class Canvas extends Component {
 
         this.props.socket.on("drawing", data =>{
             console.log(data);
-            this.drawLine(data.x0, data.y0, data.x1, data.y1, false);
+            this.drawLine(data.x0, data.y0, data.x1, data.y1, data.color, false);
         })
 
         this.setState({
@@ -42,13 +42,13 @@ class Canvas extends Component {
         });
     }
 
-    drawLine = (x0, y0, x1, y1, emit) => {
+    drawLine = (x0, y0, x1, y1, color, emit) => {
         const { context, socket } = this.state;
         //const {color} = this.props.color;
         context.beginPath();
         context.moveTo(x0, y0);
         context.lineTo(x1, y1);
-        context.strokeStyle = this.props.color.hex;
+        context.strokeStyle = color.hex;
         context.lineWidth = 2;
         context.stroke();
         context.closePath();
@@ -62,7 +62,7 @@ class Canvas extends Component {
             y0: y0,
             x1: x1,
             y1: y1,
-            color: this.props.color
+            color: color
         });
     };
 
@@ -78,6 +78,7 @@ class Canvas extends Component {
 
     onMouseUp = e => {
         const { drawing, current } = this.state;
+        const {color} = this.props;
         if (!drawing) {
             return;
         }
@@ -86,15 +87,16 @@ class Canvas extends Component {
             drawing: false
         });
 
-        this.drawLine(current.x, current.y, e.offsetX, e.offsetY, true);
+        this.drawLine(current.x, current.y, e.offsetX, e.offsetY, color, true);
     };
 
     onMouseMove = e => {
         const { drawing, current } = this.state;
+        const {color} = this.props;
         if (!drawing) {
             return;
         }
-        this.drawLine(current.x, current.y, e.offsetX, e.offsetY, true);
+        this.drawLine(current.x, current.y, e.offsetX, e.offsetY, color, true);
         this.setState({
             current: {
                 x: e.offsetX,
