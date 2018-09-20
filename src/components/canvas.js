@@ -8,7 +8,7 @@ class Canvas extends Component {
             current: {
                 x: null,
                 y: null,
-                color: 'black'
+                color: "black"
             },
             canvas: null,
             context: null,
@@ -17,7 +17,7 @@ class Canvas extends Component {
     }
 
     componentDidMount() {
-        const {socket} = this.state;
+        const { socket } = this.state;
         const canvas = this.refs.canvas;
         const context = canvas.getContext("2d");
         context.font = "40px Courier";
@@ -41,11 +41,11 @@ class Canvas extends Component {
             canvas: canvas,
             context: context,
             socket: socket
-        })
+        });
     }
 
     drawLine = (x0, y0, x1, y1, emit) => {
-        const {context, socket} = this.state;
+        const { context, socket } = this.state;
         //const {color} = this.props.color;
         context.beginPath();
         context.moveTo(x0, y0);
@@ -54,17 +54,19 @@ class Canvas extends Component {
         context.lineWidth = 2;
         context.stroke();
         context.closePath();
-    
-        if (!emit) { return; }
-    
-        this.props.socket.emit('drawing', {
-          x0: x0,
-          y0: y0,
-          x1: x1,
-          y1: y1,
-          color: this.props.color
+
+        if (!emit) {
+            return;
+        }
+
+        this.props.socket.emit("drawing", {
+            x0: x0,
+            y0: y0,
+            x1: x1,
+            y1: y1,
+            color: this.props.color
         });
-      }
+    };
 
     onMouseDown = e => {
         this.setState({
@@ -86,13 +88,7 @@ class Canvas extends Component {
             drawing: false
         });
 
-        this.drawLine(
-            current.x,
-            current.y,
-            e.offsetX,
-            e.offsetY,
-            true
-        );
+        this.drawLine(current.x, current.y, e.offsetX, e.offsetY, true);
     };
 
     onMouseMove = e => {
@@ -100,13 +96,7 @@ class Canvas extends Component {
         if (!drawing) {
             return;
         }
-        this.drawLine(
-            current.x,
-            current.y,
-            e.offsetX,
-            e.offsetY,
-            true
-        );
+        this.drawLine(current.x, current.y, e.offsetX, e.offsetY, true);
         this.setState({
             current: {
                 x: e.offsetX,
@@ -130,8 +120,19 @@ class Canvas extends Component {
 
     render() {
         return (
-            <div>
-                <canvas ref="canvas" width={640} height={425} />
+            <div className="sps-card">
+                <div className="sps-card__header">
+                    <h4 className="sps-card__title">
+                        <i
+                            className="sps-icon sps-icon-hat"
+                            aria-hidden="true"
+                        />
+                        Your own little canvas
+                    </h4>
+                </div>
+                <div className="sps-card__body">
+                    <canvas ref="canvas" width={640} height={425} />
+                </div>
             </div>
         );
     }

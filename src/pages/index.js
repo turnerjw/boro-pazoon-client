@@ -4,6 +4,7 @@ import YouTube from "react-youtube";
 import SPSHeader from "../components/header";
 import { ChromePicker } from "react-color";
 import Canvas from "../components/canvas";
+import "../styles/styles.css";
 
 class App extends Component {
     constructor() {
@@ -44,7 +45,7 @@ class App extends Component {
 
         this.setState({
             socket: socket
-        })
+        });
     }
 
     handleColorChange = (color, event) => {
@@ -66,21 +67,40 @@ class App extends Component {
             }
         };
 
-        const {videoData, color, socket} = this.state;
+        const { videoData, color, socket } = this.state;
 
         return (
             <div className="sps-page sps-page--full-width">
-                <SPSHeader />
-                <YouTube
-                    videoId={videoData.id}
-                    opts={opts}
-                    onReady={this._onReady}
-                />
-                <ChromePicker
-                    color={color}
-                    onChange={this.handleColorChange}
-                />
-                <Canvas color={color} socket={socket} />
+                <div className="sps-body sps-body--collapse-550">
+                    <aside class="sps-body__sidebar sps-body__sidebar--400">
+                        <SPSHeader />
+                        <div className="sps-card">
+                            <div class="sps-card__header">
+                                <h4 class="sps-card__title">
+                                    <i
+                                        class="sps-icon sps-icon-heart"
+                                        aria-hidden="true"
+                                    />
+                                    Bob Vision
+                                </h4>
+                            </div>
+                            <div className="sps-card__body">
+                                <YouTube
+                                    videoId={this.state.videoData.id}
+                                    opts={opts}
+                                    onReady={this._onReady}
+                                />
+                            </div>
+                        </div>
+                        <ChromePicker
+                            color={this.state.color}
+                            onChange={this.handleColorChange}
+                        />
+                    </aside>
+                    <section class="sps-main-content sps-column-layout">
+                        <Canvas color={color} socket={socket} />
+                    </section>
+                </div>
             </div>
         );
     }
