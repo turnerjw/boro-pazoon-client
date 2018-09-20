@@ -33,6 +33,11 @@ class SPSHeader extends Component {
                 About Bob
               </a>
             </li>
+            <li>
+              <a>
+                "There are no mistakes, just happy little accidents" - Bob Ross
+              </a>
+            </li>
           </ul>
           <div className="sps-navbar__dropdown-nav" aria-hidden="true">
             <div className="sps-dropdown">
