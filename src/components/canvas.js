@@ -20,8 +20,6 @@ class Canvas extends Component {
         const { socket } = this.state;
         const canvas = this.refs.canvas;
         const context = canvas.getContext("2d");
-        context.font = "40px Courier";
-        context.fillText("Test Text", 210, 75);
 
         canvas.addEventListener("mousedown", this.onMouseDown, false);
         canvas.addEventListener("mouseup", this.onMouseUp, false);
