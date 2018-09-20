@@ -12,6 +12,9 @@ class App extends Component {
             videoData: {
                 timestamp: null,
                 id: null
+            },
+            color: {
+                hex: null
             }
         };
     }
@@ -38,6 +41,12 @@ class App extends Component {
         });
     }
 
+    handleColorChange = (color, event) => {
+        this.setState({
+            color: color
+        });
+    };
+
     render() {
         const opts = {
             height: "390",
@@ -58,7 +67,10 @@ class App extends Component {
                     opts={opts}
                     onReady={this._onReady}
                 />
-                <ChromePicker />
+                <ChromePicker
+                    color={this.state.color}
+                    onChange={this.handleColorChange}
+                />
                 <Canvas />
             </div>
         );
