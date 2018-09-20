@@ -19,9 +19,9 @@ class Canvas extends Component {
         ctx.fillText("Test Text", 210, 75);
 
         canvas.addEventListener("mousedown", this.onMouseDown, false);
-        //canvas.addEventListener('mouseup', onMouseUp, false);
-        //canvas.addEventListener('mouseout', onMouseUp, false);
-        //canvas.addEventListener('mousemove', throttle(onMouseMove, 10), false);
+        canvas.addEventListener("mouseup", this.onMouseUp, false);
+        canvas.addEventListener('mouseout', this.onMouseUp, false);
+        canvas.addEventListener('mousemove', throttle(this.onMouseMove, 10), false);
     }
 
     onMouseDown = e => {
@@ -35,7 +35,7 @@ class Canvas extends Component {
     };
 
     onMouseUp = e => {
-        const {drawing, current} = this.state;
+        const { drawing, current } = this.state;
         if (!drawing) {
             return;
         }
@@ -52,6 +52,27 @@ class Canvas extends Component {
         //     current.color,
         //     true
         // );
+    };
+
+    onMouseMove = e => {
+        const { drawing } = this.state;
+        if (!drawing) {
+            return;
+        }
+        // drawLine(
+        //     current.x,
+        //     current.y,
+        //     e.clientX,
+        //     e.clientY,
+        //     current.color,
+        //     true
+        // );
+        this.setState({
+            current: {
+                x: e.clientX,
+                y: e.clientY
+            }
+        });
     };
 
     render() {
