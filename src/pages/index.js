@@ -6,7 +6,11 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            endpoint: "https://boro-pazoon-server.glitch.me/"
+            endpoint: "https://boro-pazoon-server.glitch.me/",
+            videoData: {
+                timestamp: null,
+                id: null
+            }
         };
     }
 
@@ -47,7 +51,7 @@ class App extends Component {
 
         return (
             <YouTube
-            videoId={this.state.videoData.Id}
+            videoId={this.state.videoData.id}
             opts={opts}
             onReady={this._onReady}
           />
