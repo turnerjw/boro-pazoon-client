@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 class Canvas extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             drawing: false,
             current: {
@@ -11,11 +11,13 @@ class Canvas extends Component {
                 color: 'black'
             },
             canvas: null,
-            context: null
+            context: null,
+            socket: this.props.socket
         };
     }
 
     componentDidMount() {
+        const {socket} = this.state;
         const canvas = this.refs.canvas;
         const context = canvas.getContext("2d");
         context.font = "40px Courier";
@@ -30,14 +32,21 @@ class Canvas extends Component {
             false
         );
 
+        // this.props.socket.on("drawing", data =>{
+        //     console.log(data);
+        //     this.drawLine(data.x0, data.y0, data.x1, data.y1, false);
+        // })
+
         this.setState({
             canvas: canvas,
-            context: context
+            context: context,
+            socket: socket
         })
     }
 
-    drawLine = (x0, y0, x1, y1, color, emit) => {
-        const {canvas, context} = this.state;
+    drawLine = (x0, y0, x1, y1, emit) => {
+        const {context, socket} = this.state;
+        //const {color} = this.props.color;
         context.beginPath();
         context.moveTo(x0, y0);
         context.lineTo(x1, y1);
@@ -47,16 +56,14 @@ class Canvas extends Component {
         context.closePath();
     
         if (!emit) { return; }
-        var w = canvas.width;
-        var h = canvas.height;
     
-        // socket.emit('drawing', {
-        //   x0: x0 / w,
-        //   y0: y0 / h,
-        //   x1: x1 / w,
-        //   y1: y1 / h,
-        //   color: color
-        // });
+        this.props.socket.emit('drawing', {
+          x0: x0,
+          y0: y0,
+          x1: x1,
+          y1: y1,
+          color: this.props.color
+        });
       }
 
     onMouseDown = e => {
@@ -84,7 +91,6 @@ class Canvas extends Component {
             current.y,
             e.offsetX,
             e.offsetY,
-            current.color,
             true
         );
     };
@@ -99,7 +105,6 @@ class Canvas extends Component {
             current.y,
             e.offsetX,
             e.offsetY,
-            current.color,
             true
         );
         this.setState({

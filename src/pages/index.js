@@ -16,7 +16,8 @@ class App extends Component {
             },
             color: {
                 hex: null
-            }
+            },
+            socket: null
         };
     }
 
@@ -40,6 +41,10 @@ class App extends Component {
                 videoData: data
             });
         });
+
+        this.setState({
+            socket: socket
+        })
     }
 
     handleColorChange = (color, event) => {
@@ -61,7 +66,7 @@ class App extends Component {
             }
         };
 
-        const {videoData, color} = this.state;
+        const {videoData, color, socket} = this.state;
 
         return (
             <div className="sps-page sps-page--full-width">
@@ -75,7 +80,7 @@ class App extends Component {
                     color={color}
                     onChange={this.handleColorChange}
                 />
-                <Canvas color={color} />
+                <Canvas color={color} socket={socket} />
             </div>
         );
     }
