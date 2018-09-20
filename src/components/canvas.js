@@ -63,8 +63,8 @@ class Canvas extends Component {
         this.setState({
             drawing: true,
             current: {
-                x: e.clientX,
-                y: e.clientY
+                x: e.offsetX,
+                y: e.offsetY
             }
         });
     };
@@ -82,8 +82,8 @@ class Canvas extends Component {
         this.drawLine(
             current.x,
             current.y,
-            e.clientX,
-            e.clientY,
+            e.offsetX,
+            e.offsetY,
             current.color,
             true
         );
@@ -97,15 +97,15 @@ class Canvas extends Component {
         this.drawLine(
             current.x,
             current.y,
-            e.clientX,
-            e.clientY,
+            e.offsetX,
+            e.offsetY,
             current.color,
             true
         );
         this.setState({
             current: {
-                x: e.clientX,
-                y: e.clientY
+                x: e.offsetX,
+                y: e.offsetY
             }
         });
     };
