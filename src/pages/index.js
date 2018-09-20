@@ -98,7 +98,7 @@ class App extends Component {
                         />
                     </aside>
                     <section className="sps-main-content sps-column-layout">
-                        <Canvas color={color} socket={socket} />
+                        {!!socket && <Canvas color={color} socket={socket} />}
                     </section>
                 </div>
             </div>

@@ -32,10 +32,10 @@ class Canvas extends Component {
             false
         );
 
-        // this.props.socket.on("drawing", data =>{
-        //     console.log(data);
-        //     this.drawLine(data.x0, data.y0, data.x1, data.y1, false);
-        // })
+        this.props.socket.on("drawing", data =>{
+            console.log(data);
+            this.drawLine(data.x0, data.y0, data.x1, data.y1, false);
+        })
 
         this.setState({
             canvas: canvas,
