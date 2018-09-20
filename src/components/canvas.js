@@ -127,7 +127,7 @@ class Canvas extends Component {
                             className="sps-icon sps-icon-hat"
                             aria-hidden="true"
                         />
-                        Your own little canvas
+                        Little Community Canvas
                     </h4>
                 </div>
                 <div className="sps-card__body">
