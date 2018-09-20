@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import io from "../../node_modules/socket.io-client";
-import YouTube from 'react-youtube';
-import { ChromePicker } from 'react-color';
+import YouTube from "react-youtube";
+import { ChromePicker } from "react-color";
 
 class App extends Component {
     constructor() {
@@ -11,7 +11,7 @@ class App extends Component {
             videoData: {
                 timestamp: null,
                 id: null
-            },
+            }
         };
     }
 
@@ -39,8 +39,8 @@ class App extends Component {
 
     render() {
         const opts = {
-            height: '390',
-            width: '640',
+            height: "390",
+            width: "640",
             playerVars: {
                 autoplay: 1,
                 controls: 0,
@@ -51,13 +51,15 @@ class App extends Component {
         };
 
         return (
-            <YouTube
-                videoId={this.state.videoData.id}
-                opts={opts}
-                onReady={this._onReady}
-                /> ,
-            <ChromePicker/>
-        )
+            <div>
+                <YouTube
+                    videoId={this.state.videoData.id}
+                    opts={opts}
+                    onReady={this._onReady}
+                />
+                <ChromePicker />
+            </div>
+        );
     }
 }
 
