@@ -57,19 +57,18 @@ class App extends Component {
     };
 
     render() {
+        const { videoData, color, socket } = this.state;
         const opts = {
             height: "390",
             width: "640",
             playerVars: {
                 autoplay: 1,
                 controls: 0,
-                start: this.state.videoData.timestamp,
+                start: videoData.timestamp,
                 enablejsapi: true,
                 showinfo: 0
             }
         };
-
-        const { videoData, color, socket } = this.state;
 
         return (
             <div className="sps-page sps-page--full-width">
@@ -88,14 +87,14 @@ class App extends Component {
                             </div>
                             <div className="sps-card__body">
                                 <YouTube
-                                    videoId={this.state.videoData.id}
+                                    videoId={videoData.id}
                                     opts={opts}
                                     onReady={this._onReady}
                                 />
                             </div>
                         </div>
                         <ChromePicker
-                            color={this.state.color}
+                            color={color}
                             onChange={this.handleColorChange}
                         />
                     </aside>

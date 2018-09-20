@@ -129,7 +129,7 @@ class Canvas extends Component {
                     </h4>
                 </div>
                 <div className="sps-card__body">
-                    <canvas ref="canvas" width={400} height={400} />
+                    <canvas ref="canvas" width={1000} height={600} />
                 </div>
             </div>
         );
