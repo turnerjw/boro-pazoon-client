@@ -61,19 +61,21 @@ class App extends Component {
             }
         };
 
+        const {videoData, color} = this.state;
+
         return (
             <div className="sps-page sps-page--full-width">
                 <SPSHeader />
                 <YouTube
-                    videoId={this.state.videoData.id}
+                    videoId={videoData.id}
                     opts={opts}
                     onReady={this._onReady}
                 />
                 <ChromePicker
-                    color={this.state.color}
+                    color={color}
                     onChange={this.handleColorChange}
                 />
-                <Canvas />
+                <Canvas color={color} />
             </div>
         );
     }
