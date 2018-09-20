@@ -3,6 +3,7 @@ import io from "../../node_modules/socket.io-client";
 import YouTube from "react-youtube";
 import SPSHeader from "../components/header";
 import { ChromePicker } from "react-color";
+import Canvas from "../components/canvas";
 
 class App extends Component {
   constructor() {
@@ -72,6 +73,7 @@ class App extends Component {
           color={this.state.color}
           onChange={this.handleColorChange}
         />
+        <Canvas />
       </div>
     );
   }
