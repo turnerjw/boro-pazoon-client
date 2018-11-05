@@ -1,10 +1,5 @@
-# gatsby-starter-hello-world
-Starter with the bare essentials needed for a [Gatsby](https://www.gatsbyjs.org/) site
+# Bob Ross's Paint Zone: Online
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
-```
-gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
-```
+This is the client code for BoRoPaZoOn
 
-## Running in development
-`gatsby develop`
+Follow along with a Bob Ross video in your browser with everybody sharing the same canvas 🎨🖌
